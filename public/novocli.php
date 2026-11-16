@@ -152,7 +152,7 @@ endif;
       <div class="container mb-4">
         <button type="submit" class="btn btn-primary">Enviar</button>
         <button type="button" value="Limpar" onclick="resetar()" class="btn btn-light">Limpar</button>
-        <button class="btn btn-link" onclick="window.location='../public/lista_clientes.php'">Voltar</button>
+        <button class="btn btn-link" onclick="window.location='lista_clientes.php'">Voltar</button>
         
       </div>
     </form>

@@ -2,13 +2,13 @@
 
 //include_once 'conexao.class.php';
 
-$utf8 = header("Content-Type: text/html; charset=utf-8");
+// $utf8 = header("Content-Type: text/html; charset=utf-8");
 
 // Dev
  $db_host = 'localhost:3306'; // servidor
  $db_user = 'root'; // usuario do banco
  $db_pass = ''; // senha do usuario do banco
- $db_name = 'db_printer3d'; // nome do banco
+ $db_name = 'dbsgc'; // nome do banco
 
 $link = new mysqli($db_host, $db_user,$db_pass, $db_name);
 // Prod

@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $user = "root";
-$pass = "oyster";
-$dbname = "db_printer3d";
+$pass = "";
+$dbname = "dbsgc";
 $port = 3306;
 
 try{
