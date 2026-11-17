@@ -22,11 +22,11 @@ if (!$queryUpdate) {
 }
 
 if ($affected_rows > 0) {
-    header("refresh:1;url=../public/lista_clientes.php"); // Redireciona após 2 segundos
-    echo '<script>alert("Registro atualizado com sucesso!");</script>';
+    header("refresh:1;url=../public/lista_clientes.php"); // Redireciona após 1 segundos
+    echo '<script>alert("Cliente atualizado com sucesso!");</script>';
     exit;
 } else {
-    header("refresh:1;url=../public/lista_clientes.php"); // Redireciona após 2 segundos
+    header("refresh:1;url=../public/lista_clientes.php"); // Redireciona após 1 segundos
     echo '<script>alert("Nada a atualizar!");</script>';
     exit;
     

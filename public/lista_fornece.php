@@ -13,7 +13,6 @@
       <a href="novofor.php" class="waves-effect waves-light btn-small right">Novo</a>
     </div>
 
-
   </div>
   <div class="col s12">
     <br>
