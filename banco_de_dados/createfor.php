@@ -6,15 +6,26 @@ include_once '../valida.php';
 $cpf_cnpj  = filter_input(INPUT_POST, 'cpf_cnpj',  FILTER_SANITIZE_SPECIAL_CHARS);
 $nome    = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $endereco    = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_SPECIAL_CHARS);
+$bairro    = filter_input(INPUT_POST, 'bairro', FILTER_SANITIZE_SPECIAL_CHARS);
+$cidade   = filter_input(INPUT_POST, 'cidade', FILTER_VALIDATE_EMAIL);
+$estado  = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_SPECIAL_CHARS);
+$cep    = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_SPECIAL_CHARS);
 $email   = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$telefone  = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_SPECIAL_CHARS);
 $celular  = filter_input(INPUT_POST, 'celular', FILTER_SANITIZE_SPECIAL_CHARS);
 
 $_SESSION['cpf_cnpj'] = $cpf_cnpj;
 
 $_SESSION['nome'] = $nome;
 $_SESSION['endereco'] = $email;
+$_SESSION['bairro'] = $bairro;
+$_SESSION['cidade'] = $cidade;
+$_SESSION['estado'] = $estado;
+$_SESSION['cep'] = $cep;
 $_SESSION['email'] = $email;
+$_SESSION['telefone'] = $telefone;
 $_SESSION['celular'] = $celular;
+
 
 /*
 if(validaCPF($cpf) == false) :
@@ -35,6 +46,7 @@ if(validaCelular($celular) == false) :
     exit;
 endif;
 */
+
 $querySelect = $link->query("SELECT cpf_cnpj from tb_fornecedores where cpf_cnpj = '$cpf_cnpj'");
 
 $affected_rows = mysqli_affected_rows($link);
@@ -44,8 +56,8 @@ if ($affected_rows > 0 ):
     header("Location: ../novofor.php");
 else :
     //$affected_rows = 0;
-    $str_sql = "insert into tb_fornecedores (cpf_cnpj,nome,endereco,email,celular) 
-                                 values ( '$cpf_cnpj','$nome','$endereco', '$email','$celular')";
+    $str_sql = "insert into tb_fornecedores (cpf_cnpj,nome,endereco,bairro,cidade,estado,cep,email,telefone,celular) 
+                                 values ( '$cpf_cnpj','$nome','$endereco','$bairro','$cidade','$estado','$cep','$email','$telefone','$celular')";
     
     $queryInsert = $link->query($str_sql);
     $affected_rows = mysqli_affected_rows($link);

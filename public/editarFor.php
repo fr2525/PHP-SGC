@@ -58,7 +58,7 @@ endwhile;
                 </div>
 
                 <!-- Campo Nome -->
-                <div class="input-field col s6">
+                <div class="input-field col s9">
                     <!-- <i class="material-icons prefix">account_circle</i> -->
                     <input type="text" name="nome" id="nome" value="<?php echo $nome ?>" maxlength="60" required
                         autofocus>
@@ -74,7 +74,7 @@ endwhile;
                     <label for="endereco">Endereço</label>
                 </div>
 
-            <!-- Campo bairro -->
+                <!-- Campo bairro -->
                 <div class="input-field col s6">
                     <!-- <i class="material-icons prefix">add_location</i> -->
                     <input type="text" name="bairro" id="bairro" value="<?php echo $bairro ?>" maxlength="60">
@@ -116,7 +116,6 @@ endwhile;
                     <label for="celular">Tel.Celular</label>
                 </div>
             </div>
-
 
             <!-- Campo email -->
             <div class="row">
