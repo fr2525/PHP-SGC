@@ -28,7 +28,6 @@ while ($registros = $querySelect->fetch_assoc()):
     echo "<tr>";
     echo "<td>$cpf_cnpj</td>";
     echo "<td>$nome</td>";
-    echo "<td>$endereco</td>";
     echo "<td>$cidade</td>";
     echo "<td>$email</td>";
     echo "<td>$celular</td>";

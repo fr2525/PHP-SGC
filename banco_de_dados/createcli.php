@@ -39,13 +39,13 @@ endif;
 
 if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
     $_SESSION['msg'] = "<h5><p class='center red-text'>" . "e-mail é inválido." . "</p></h5>";
-    header("Location: ../novocli.php");
+    header("Location: ../public/novocli.php");
     exit;
 }
 
 if(validaCelular($celular) == false) :
     $_SESSION['msg'] = "<h5><p class='center red-text'>" . "Número de celular inválido" . "</p></h5>";
-    header("Location: ../novocli.php");
+    header("Location: ../public/novocli.php");
     exit;
 endif;
 
@@ -55,7 +55,7 @@ $affected_rows = mysqli_affected_rows($link);
 
 if ($affected_rows > 0 ):
     $_SESSION['msg'] = "<h5><p class='center red-text'>" . "Cliente já cadastrado com esse CPF" . "</p></h5>";
-    header("Location: ../novocli.php");
+    header("Location: ../public/novocli.php");
 else :
     //$affected_rows = 0;
     $str_sql = "insert into tb_clientes (cpf_cnpj,nome,endereco,numero,complemento,bairro,cidade,estado,cep,email,celular) 
@@ -65,8 +65,8 @@ else :
     $queryInsert = $link->query($str_sql);
     $affected_rows = mysqli_affected_rows($link);
     if ($affected_rows > 0) :
-        $_SESSION['msg'] = "<h5><p class='center green-text'>" . "Cadastro efetuado com sucesso" . "</p></h5>";
-        header("Location: ../novocli.php");
         session_unset();
+        $_SESSION['msg'] = "<h5><p class='center green-text'>" . "Cadastro efetuado com sucesso" . "</p></h5>";
+        header("Location: ../public/novocli.php");
     endif;
 endif;

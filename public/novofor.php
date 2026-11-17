@@ -85,8 +85,8 @@ endif;
             endif;
             ?>
 
-            <!-- Campo CPF/CNPJ -->
             <div class="row">
+                <!-- Campo CPF/CNPJ -->
                 <div class="input-field col s3">
                     <!-- <i class="material-icons prefix">fingerprint</i> -->
                     <input type="text" name="cpf_cnpj" value="<?php echo $cpf_cnpj ?>" id="cpf_cnpj" maxlength="20"
@@ -154,8 +154,8 @@ endif;
                 </div>
             </div>
 
-            <!-- Campo email -->
             <div class="row">
+                <!-- Campo email -->
                 <div class="input-field col s12">
                     <!-- <i class="material-icons prefix">email</i> -->
                     <input type="text" name="email" value="<?php echo $email ?>" id="email" maxlength="100" required="">

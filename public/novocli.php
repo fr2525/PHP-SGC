@@ -71,7 +71,7 @@ endif;
     <form action="../banco_de_dados/createcli.php" id="formCliente" method="post" class="col s12">
         <fieldset class="formulario" style="padding: 15px">
             <!-- <legend><img src="imagens/avatar-1.png" width="50"></legend>  -->
-            <h5 class="light center">Cadastro de Clientes</h5>
+            <h5 class="light center">Inclusão de Cliente</h5>
 
             <?php
             if (isset($_SESSION['msg'])):
@@ -83,7 +83,7 @@ endif;
             <div class="row">
                 <!-- Campo CPF -->
                 <div class="input-field col s3">
-                    <!--                   <i class="material-icons prefix">fingerprint</i> -->
+                    <!-- <i class="material-icons prefix">fingerprint</i> -->
                     <input type="text" name="cpf_cnpj" value="<?php echo $cpf_cnpj ?>" id="cpf_cnpj" maxlength="20"
                         required="" autofocus>
                     <label for="cpf_cnpj">CPF/CNPJ</label>
@@ -91,7 +91,7 @@ endif;
 
                 <!-- Campo Nome -->
                 <div class="input-field col s6">
-                    <!--                    <i class="material-icons prefix">account_circle</i> -->
+                    <!-- <i class="material-icons prefix">account_circle</i> -->
                     <input type="text" name="nome" id="nome" value="<?php echo $nome ?>" maxlength="40" required="">
                     <label for="nome">Nome do cliente</label>
                 </div>
@@ -156,6 +156,7 @@ endif;
                     <label for="CEP">CEP</label>
                 </div>
             </div>
+
             <div class="row">
                 <!-- Campo email -->
                 <div class="input-field col s12">
