@@ -25,6 +25,7 @@
           <th>CPF/CNPJ</th>
           <th>Nome</th>
           <th>Endereço</th>
+          <th>Cidade/UF</th>
           <th>Email</th>
           <th>Celular</th>
           <th>Ações</th>

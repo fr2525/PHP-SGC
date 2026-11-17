@@ -11,7 +11,7 @@ $inicio     = ($quantidade * $pagina) - $quantidade;
 $sqlTotal   = "SELECT id FROM tb_fornecedores";
 
 //Monta o SQL com LIMIT para exibição dos dados  
-$strsql ="select id, cpf_cnpj, nome, endereco, email, celular from tb_fornecedores ORDER BY nome LIMIT $inicio, $quantidade";
+$strsql ="select id, cpf_cnpj, nome, endereco, cidade,estado,email, celular from tb_fornecedores ORDER BY nome LIMIT $inicio, $quantidade";
 //Executa o SQL
 $querySelect = $link->query($strsql);
 
@@ -21,6 +21,7 @@ while ($registros = $querySelect->fetch_assoc()):
     $cpf_cnpj = $registros['cpf_cnpj'];
     $nome = $registros['nome'];
     $endereco = $registros['endereco'];
+    $cidade = trim($registros['cidade'])  . '/' . trim($registros['estado']);
     $email = $registros['email'];
     $celular = $registros['celular'];
 
@@ -28,6 +29,7 @@ while ($registros = $querySelect->fetch_assoc()):
     echo "<td>$cpf_cnpj</td>";
     echo "<td>$nome</td>";
     echo "<td>$endereco</td>";
+    echo "<td>$cidade</td>";
     echo "<td>$email</td>";
     echo "<td>$celular</td>";
 
