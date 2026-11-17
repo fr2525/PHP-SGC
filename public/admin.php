@@ -6,19 +6,22 @@
 // id,nome,usuario,senha,celular,nivel,comissao,salario
 ?>
 
-<div class="container text-center">
-    <div class="d-flex justify-content-between align-items-center bg-light p-3">
-        <!-- Conteúdo do lado esquerdo (um texto, por exemplo) -->
-        <div>
-            <span class="fw-bold">Lista de Usuarios</span>
+<div class="row container">
+    <div class="col s12">
+        <div class="col s9" style="text-align: left;">
+            <h5 class="light">Lista de Usuários</h5>    
         </div>
-        <!-- Botão do lado direito -->
-        <div>
-            <a href="novousu.php" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Novo</a>
+        <div class="col s3" style="padding: 15px 0px 0px 0px;">
+            <a href="novousu.php" class="waves-effect waves-light btn-large right">Novo</a>
         </div>
+
     </div>
-    <div class="col-12">
-        <table class="table table-striped">
+    <div class="col s12">
+        <br>
+        <hr>
+    </div>
+    <div class="col s12">
+        <table class="striped">
             <thead>
                 <tr>
                     <th>Nome</th>

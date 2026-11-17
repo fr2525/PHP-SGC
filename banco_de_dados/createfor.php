@@ -51,7 +51,7 @@ else :
     $affected_rows = mysqli_affected_rows($link);
     if ($affected_rows > 0) :
         $_SESSION['msg'] = "<h5><p class='center green-text'>" . "Cadastro efetuado com sucesso" . "</p></h5>";
-        header("Location:../lista_fornece.php");
+        header("Location:../public/lista_fornece.php");
         session_unset();
     endif;
 endif;

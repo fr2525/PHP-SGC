@@ -1,97 +1,3 @@
-#
-# DUMP FILE
-#
-# Database is ported from MS Access
-#------------------------------------------------------------------
-# Created using "MS Access to MySQL" form http://www.bullzip.com
-# Program Version 5.5.282
-#
-# OPTIONS:
-#   sourcefilename=C:/Aplics/PHP/PHP_SGC/banco_de_dados/DBsgl.mdb
-#   sourceusername=
-#   sourcepassword=
-#   sourcesystemdatabase=
-#   destinationdatabase=dbSGC
-#   storageengine=MyISAM
-#   dropdatabase=0
-#   createtables=1
-#   unicode=1
-#   autocommit=1
-#   transferdefaultvalues=1
-#   transferindexes=1
-#   transferautonumbers=1
-#   transferrecords=1
-#   columnlist=1
-#   tableprefix=
-#   negativeboolean=0
-#   ignorelargeblobs=0
-#   memotype=LONGTEXT
-#   datetimetype=DATETIME
-#
-
-CREATE DATABASE IF NOT EXISTS `dbSGC`;
-USE `dbSGC`;
-
-#
-# Table structure for table 'Caixa'
-#
-
-DROP TABLE IF EXISTS `Caixa`;
-
-CREATE TABLE `Caixa` (
-  `Hoje` DATETIME, 
-  `Troco` DECIMAL(19,4), 
-  `Particular` DECIMAL(19,4) DEFAULT 0, 
-  `Saidas` DECIMAL(19,4) DEFAULT 0, 
-  `vvista` DECIMAL(19,4), 
-  `vale` DECIMAL(19,4) DEFAULT 0, 
-  `credito` DECIMAL(19,4) DEFAULT 0, 
-  UNIQUE (`Hoje`)
-) ENGINE=myisam DEFAULT CHARSET=utf8;
-
-SET autocommit=1;
-
-#
-# Dumping data for table 'Caixa'
-#
-
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-05-01 00:00:00', 0, NULL, NULL, 21.11, NULL, NULL);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-08-10 00:00:00', 10, 0, 0, NULL, 0, 0);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-08-18 00:00:00', 0, 0, 0, 3, 0, 0);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-09-05 00:00:00', 0, 0, 0, 1, 0, 0);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-09-09 00:00:00', 0, 0, 0, NULL, 0, 0);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-04-21 00:00:00', 0, NULL, NULL, 20, NULL, NULL);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-04-27 00:00:00', 0, NULL, NULL, 20, NULL, NULL);
-INSERT INTO `Caixa` (`Hoje`, `Troco`, `Particular`, `Saidas`, `vvista`, `vale`, `credito`) VALUES ('2004-04-30 00:00:00', 0, NULL, NULL, 21.11, NULL, NULL);
-# 8 records
-
-#
-# Table structure for table 'Cotacoes'
-#
-
-DROP TABLE IF EXISTS `Cotacoes`;
-
-CREATE TABLE `Cotacoes` (
-  `Codigo` INTEGER NOT NULL, 
-  `Data` DATETIME NOT NULL, 
-  `Valor` DECIMAL(19,4) NOT NULL, 
-  `Operador` VARCHAR(10), 
-  `Datatual` DATETIME, 
-  UNIQUE (`Codigo`, `Data`)
-) ENGINE=myisam DEFAULT CHARSET=utf8;
-
-SET autocommit=1;
-
-#
-# Dumping data for table 'Cotacoes'
-#
-
-# 0 records
-
-#
-# Table structure for table 'Entrada'
-#
-
 DROP TABLE IF EXISTS `Entrada`;
 
 CREATE TABLE `Entrada` (
@@ -108,13 +14,8 @@ CREATE TABLE `Entrada` (
   `SUBSTRIBU` DOUBLE NULL, 
   `operador` VARCHAR(10), 
   `datatual` DATETIME
-) ENGINE=myisam DEFAULT CHARSET=utf8;
+)
 
-SET autocommit=1;
-
-#
-# Dumping data for table 'Entrada'
-#
 
 INSERT INTO `Entrada` (`CODFOR`, `DATAMOV`, `dtentrada`, `TIPO_ENT`, `NOTAFISC`, `DUPLICATA`, `VENCTO`, `VALOR`, `ICMS`, `DESCONTO`, `SUBSTRIBU`, `operador`, `datatual`) VALUES ('001', '2004-04-20 00:00:00', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `Entrada` (`CODFOR`, `DATAMOV`, `dtentrada`, `TIPO_ENT`, `NOTAFISC`, `DUPLICATA`, `VENCTO`, `VALOR`, `ICMS`, `DESCONTO`, `SUBSTRIBU`, `operador`, `datatual`) VALUES ('77', '2004-04-20 00:00:00', NULL, NULL, '1', '', NULL, 10, NULL, NULL, NULL, 'Master', '2004-04-26 00:00:00');
@@ -138,11 +39,6 @@ INSERT INTO `Entrada` (`CODFOR`, `DATAMOV`, `dtentrada`, `TIPO_ENT`, `NOTAFISC`,
 INSERT INTO `Entrada` (`CODFOR`, `DATAMOV`, `dtentrada`, `TIPO_ENT`, `NOTAFISC`, `DUPLICATA`, `VENCTO`, `VALOR`, `ICMS`, `DESCONTO`, `SUBSTRIBU`, `operador`, `datatual`) VALUES ('15', '2004-08-15 00:00:00', NULL, NULL, '1234', NULL, NULL, 10408.7, NULL, NULL, NULL, 'Master', '2004-08-18 00:00:00');
 INSERT INTO `Entrada` (`CODFOR`, `DATAMOV`, `dtentrada`, `TIPO_ENT`, `NOTAFISC`, `DUPLICATA`, `VENCTO`, `VALOR`, `ICMS`, `DESCONTO`, `SUBSTRIBU`, `operador`, `datatual`) VALUES ('15', '2004-08-15 00:00:00', NULL, NULL, '1234', NULL, NULL, 10408.7, NULL, NULL, NULL, 'Master', '2004-08-18 00:00:00');
 INSERT INTO `Entrada` (`CODFOR`, `DATAMOV`, `dtentrada`, `TIPO_ENT`, `NOTAFISC`, `DUPLICATA`, `VENCTO`, `VALOR`, `ICMS`, `DESCONTO`, `SUBSTRIBU`, `operador`, `datatual`) VALUES ('15', '2004-08-15 00:00:00', NULL, NULL, '1', NULL, NULL, 78, NULL, NULL, NULL, 'Master', '2004-08-18 00:00:00');
-# 22 records
-
-#
-# Table structure for table 'tab_APAGAR'
-#
 
 DROP TABLE IF EXISTS `tab_APAGAR`;
 
@@ -163,9 +59,6 @@ CREATE TABLE `tab_APAGAR` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'tab_APAGAR'
-#
 
 INSERT INTO `tab_APAGAR` (`CODFOR`, `DUPLICATA`, `DATAMOV`, `VENCTO`, `VALOR`, `notafiscal`, `DTPAGTO`, `VALORPAGO`, `operador`, `datatual`) VALUES (15, '123', '2004-08-17 00:00:00', '2004-09-16 00:00:00', 1569.8, '123', NULL, 0, 'Master', '2004-08-28 00:00:00');
 INSERT INTO `tab_APAGAR` (`CODFOR`, `DUPLICATA`, `DATAMOV`, `VENCTO`, `VALOR`, `notafiscal`, `DTPAGTO`, `VALORPAGO`, `operador`, `datatual`) VALUES (15, '1234', '2004-08-18 00:00:00', '2004-09-15 00:00:00', 6000.16, '1234', NULL, 0, 'Master', '2004-08-28 00:00:00');
@@ -176,11 +69,6 @@ INSERT INTO `tab_APAGAR` (`CODFOR`, `DUPLICATA`, `DATAMOV`, `VENCTO`, `VALOR`, `
 INSERT INTO `tab_APAGAR` (`CODFOR`, `DUPLICATA`, `DATAMOV`, `VENCTO`, `VALOR`, `notafiscal`, `DTPAGTO`, `VALORPAGO`, `operador`, `datatual`) VALUES (20, '5542', '2004-08-17 00:00:00', '2004-09-16 00:00:00', 1500, '123', NULL, 0, 'Master', '2004-08-28 00:00:00');
 INSERT INTO `tab_APAGAR` (`CODFOR`, `DUPLICATA`, `DATAMOV`, `VENCTO`, `VALOR`, `notafiscal`, `DTPAGTO`, `VALORPAGO`, `operador`, `datatual`) VALUES (15, '1', '2004-08-31 00:00:00', '2004-09-01 00:00:00', 210, '54555', NULL, NULL, 'Master', '2004-08-31 00:00:00');
 INSERT INTO `tab_APAGAR` (`CODFOR`, `DUPLICATA`, `DATAMOV`, `VENCTO`, `VALOR`, `notafiscal`, `DTPAGTO`, `VALORPAGO`, `operador`, `datatual`) VALUES (15, '1', '2008-01-21 00:00:00', '2008-02-21 00:00:00', 500, '1222', NULL, NULL, 'Master', '2008-01-21 00:00:00');
-# 9 records
-
-#
-# Table structure for table 'tab_ccusto'
-#
 
 DROP TABLE IF EXISTS `tab_ccusto`;
 
@@ -200,10 +88,6 @@ CREATE TABLE `tab_ccusto` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'tab_ccusto'
-#
-
 INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `Debito`, `Credito`, `operador`, `datatual`) VALUES (1, 'VENDAS', NULL, NULL, '         0', '   0', 0, 2272636.65, NULL, '2004-03-30 00:00:00');
 INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `Debito`, `Credito`, `operador`, `datatual`) VALUES (2, 'OUTRAS RECEITAS', NULL, NULL, '         0', '   0', 61449.03, 0, NULL, '2004-03-31 00:00:00');
 INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `Debito`, `Credito`, `operador`, `datatual`) VALUES (3, 'SILVIO PARTICULAR', NULL, NULL, '         0', '   0', 161119.07, 0, NULL, '2004-04-01 00:00:00');
@@ -215,11 +99,6 @@ INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `
 INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `Debito`, `Credito`, `operador`, `datatual`) VALUES (9, 'DESPESAS FIXAS', NULL, NULL, '         0', '   0', 209286.32, 0, NULL, '2004-03-26 00:00:00');
 INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `Debito`, `Credito`, `operador`, `datatual`) VALUES (10, 'COMBUSTIVEL', NULL, NULL, '         0', '   0', 34172.72, 0, NULL, '2004-03-18 00:00:00');
 INSERT INTO `tab_ccusto` (`codigo`, `descricao`, `local`, `RES`, `TEL`, `DDD`, `Debito`, `Credito`, `operador`, `datatual`) VALUES (11, 'DESPESAS BANCARIA/JUROS', NULL, NULL, '       0       0', '0000', 161.28, 0, NULL, '2003-06-02 00:00:00');
-# 11 records
-
-#
-# Table structure for table 'tab_clientes'
-#
 
 DROP TABLE IF EXISTS `tab_clientes`;
 
@@ -258,10 +137,6 @@ CREATE TABLE `tab_clientes` (
 ) ENGINE=myisam DEFAULT CHARSET=utf8;
 
 SET autocommit=1;
-
-#
-# Dumping data for table 'tab_clientes'
-#
 
 INSERT INTO `tab_clientes` (`Codcli`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `CGCCPF`, `RG`, `TELEFONE`, `CELULAR`, `DIAANIVER`, `MESANIVER`, `ANOANIVER`, `ULTCOMPRA`, `OBSERVA`, `email`, `Contato`, `Limite`, `Saldo`, `EndCobra`, `BairCobra`, `CidaCobra`, `UFcobra`, `CepCobra`, `Negativo`, `Insc_est`, `Operador`, `Datatual`) VALUES (1, ' CONSUMIDOR', NULL, NULL, NULL, 'SP', NULL, NULL, NULL, '           0', '           0', NULL, NULL, NULL, '2004-08-16 00:00:00', NULL, NULL, NULL, 696005.73, 8788.65, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 INSERT INTO `tab_clientes` (`Codcli`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `CGCCPF`, `RG`, `TELEFONE`, `CELULAR`, `DIAANIVER`, `MESANIVER`, `ANOANIVER`, `ULTCOMPRA`, `OBSERVA`, `email`, `Contato`, `Limite`, `Saldo`, `EndCobra`, `BairCobra`, `CidaCobra`, `UFcobra`, `CepCobra`, `Negativo`, `Insc_est`, `Operador`, `Datatual`) VALUES (2, 'ADAILTON SARAIVA DE BARROS', 'AV. BENJAMIM H. HANNICULT, 1200-AP', 'VILA RIO DE JANEIRO', 'GUARULHOS', 'SP', '07124000', '00448601885', NULL, '11  64565294', '11         0', NULL, NULL, NULL, '2004-09-05 00:00:00', NULL, NULL, NULL, 87.49, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
@@ -697,11 +572,6 @@ INSERT INTO `tab_clientes` (`Codcli`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `E
 INSERT INTO `tab_clientes` (`Codcli`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `CGCCPF`, `RG`, `TELEFONE`, `CELULAR`, `DIAANIVER`, `MESANIVER`, `ANOANIVER`, `ULTCOMPRA`, `OBSERVA`, `email`, `Contato`, `Limite`, `Saldo`, `EndCobra`, `BairCobra`, `CidaCobra`, `UFcobra`, `CepCobra`, `Negativo`, `Insc_est`, `Operador`, `Datatual`) VALUES (409, 'R & R DESINGN LTDA', 'R. SOLD ADAO WOJCIK, 08', 'PQ RENATO MAIA', 'GRS', 'SP', '07115280', '01573819000100', NULL, '11  64410483', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'C/ RONALDO', 199.5, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 INSERT INTO `tab_clientes` (`Codcli`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `CGCCPF`, `RG`, `TELEFONE`, `CELULAR`, `DIAANIVER`, `MESANIVER`, `ANOANIVER`, `ULTCOMPRA`, `OBSERVA`, `email`, `Contato`, `Limite`, `Saldo`, `EndCobra`, `BairCobra`, `CidaCobra`, `UFcobra`, `CepCobra`, `Negativo`, `Insc_est`, `Operador`, `Datatual`) VALUES (410, 'ZILMA DE ASSIS CHAVES', 'R.WALDEMAR DE PAULA FERREIRA, 38', 'JD PRES DUTRA', 'GUARULHOS', 'SP', '07172010', '10872489817', NULL, '11  64332627', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'C/ ZILMA OU JOAOZINHO', 559.58, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 INSERT INTO `tab_clientes` (`Codcli`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `CGCCPF`, `RG`, `TELEFONE`, `CELULAR`, `DIAANIVER`, `MESANIVER`, `ANOANIVER`, `ULTCOMPRA`, `OBSERVA`, `email`, `Contato`, `Limite`, `Saldo`, `EndCobra`, `BairCobra`, `CidaCobra`, `UFcobra`, `CepCobra`, `Negativo`, `Insc_est`, `Operador`, `Datatual`) VALUES (411, 'FORNECEDORA DE AREIA IRMAOS SATO L', 'AV SALGADO FILHO, 3606', 'VL RIO DE JANEIRO', 'GRS', 'SP', '07115000', '44274074000191', NULL, '11  64569550', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'C/ GERSON OU CARLOS', 88, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
-# 434 records
-
-#
-# Table structure for table 'Tab_compra'
-#
 
 DROP TABLE IF EXISTS `Tab_compra`;
 
@@ -726,15 +596,6 @@ CREATE TABLE `Tab_compra` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_compra'
-#
-
-# 0 records
-
-#
-# Table structure for table 'Tab_despesas'
-#
 
 DROP TABLE IF EXISTS `Tab_despesas`;
 
@@ -750,16 +611,6 @@ CREATE TABLE `Tab_despesas` (
 ) ENGINE=myisam DEFAULT CHARSET=utf8;
 
 SET autocommit=1;
-
-#
-# Dumping data for table 'Tab_despesas'
-#
-
-# 0 records
-
-#
-# Table structure for table 'tab_fornece'
-#
 
 DROP TABLE IF EXISTS `tab_fornece`;
 
@@ -787,9 +638,6 @@ CREATE TABLE `tab_fornece` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'tab_fornece'
-#
 
 INSERT INTO `tab_fornece` (`codfor`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `TELEFONE`, `FAX`, `CONTATO`, `OBSERVACAO`, `Operador`, `Datatual`, `Insc_est`, `email`, `CNPJ1`, `cnpj`) VALUES (1, 'METALURGICA VJ FIKISS LTDA.', 'RUA LAGOA DA CANOA, 67', 'JARDIM ARAPONGAS', 'GUARULHOS', 'SP', '07271100', '11  64122367', '0800 7700237', '', 'E-MAIL: FIKISS@IG.COM.BR', 'Master', '2004-04-17 00:00:00', '336.501.703.110', NULL, NULL, '96376082000142');
 INSERT INTO `tab_fornece` (`codfor`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `TELEFONE`, `FAX`, `CONTATO`, `OBSERVACAO`, `Operador`, `Datatual`, `Insc_est`, `email`, `CNPJ1`, `cnpj`) VALUES (2, 'GERDAU S/A', 'RUA CORONEL GUILHERME ROCHA, 400', 'VILA MARIA', 'SAO PAULO', 'SP', '02167030', '11  60957799', '           0', NULL, 'VENDEDORA MIRELA', NULL, NULL, '110.312.033.119', NULL, NULL, '33611500014845');
@@ -1005,11 +853,6 @@ INSERT INTO `tab_fornece` (`codfor`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ES
 INSERT INTO `tab_fornece` (`codfor`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `TELEFONE`, `FAX`, `CONTATO`, `OBSERVACAO`, `Operador`, `Datatual`, `Insc_est`, `email`, `CNPJ1`, `cnpj`) VALUES (216, 'CLARO BCP S/A', 'RUA FLORIDA, 1970', 'CIDADE MONCOES', 'SAO PAULO', 'SP', '04565001', '0800  363636', '             0', NULL, NULL, NULL, NULL, '114.814.878.119', NULL, NULL, '40432544000147');
 INSERT INTO `tab_fornece` (`codfor`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `TELEFONE`, `FAX`, `CONTATO`, `OBSERVACAO`, `Operador`, `Datatual`, `Insc_est`, `email`, `CNPJ1`, `cnpj`) VALUES (217, 'MAURANO NAO FERROSOS', 'RUA GUARANESIA, 438', 'VILA MARIA', 'SAO PAULO', 'SP', '02112000', '11  66322000', '             0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `tab_fornece` (`codfor`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `TELEFONE`, `FAX`, `CONTATO`, `OBSERVACAO`, `Operador`, `Datatual`, `Insc_est`, `email`, `CNPJ1`, `cnpj`) VALUES (218, 'IRMAOS GALEAZZI METAIS', NULL, NULL, NULL, 'AC', NULL, '             0', '             0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-# 214 records
-
-#
-# Table structure for table 'tab_Grupos'
-#
 
 DROP TABLE IF EXISTS `tab_Grupos`;
 
@@ -1026,19 +869,11 @@ CREATE TABLE `tab_Grupos` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'tab_Grupos'
-#
 
 INSERT INTO `tab_Grupos` (`CODGRUPO`, `DESCRICAO`, `INDLUCRO1`, `INDLUCRO2`, `ICMS`, `Operador`, `Datatual`) VALUES (1, 'MEMORIAS', NULL, NULL, NULL, 'Master', '2006-09-10 00:00:00');
 INSERT INTO `tab_Grupos` (`CODGRUPO`, `DESCRICAO`, `INDLUCRO1`, `INDLUCRO2`, `ICMS`, `Operador`, `Datatual`) VALUES (2, 'PLACA MAE', NULL, NULL, NULL, 'Master', '2006-09-10 00:00:00');
 INSERT INTO `tab_Grupos` (`CODGRUPO`, `DESCRICAO`, `INDLUCRO1`, `INDLUCRO2`, `ICMS`, `Operador`, `Datatual`) VALUES (3, 'HD', NULL, NULL, NULL, 'Master', '2006-09-10 00:00:00');
 INSERT INTO `tab_Grupos` (`CODGRUPO`, `DESCRICAO`, `INDLUCRO1`, `INDLUCRO2`, `ICMS`, `Operador`, `Datatual`) VALUES (4, 'PLACA DE VIDEO', NULL, NULL, NULL, 'Master', '2006-09-10 00:00:00');
-# 4 records
-
-#
-# Table structure for table 'Tab_impostos'
-#
 
 DROP TABLE IF EXISTS `Tab_impostos`;
 
@@ -1052,17 +887,8 @@ CREATE TABLE `Tab_impostos` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_impostos'
-#
-
 INSERT INTO `Tab_impostos` (`cod_imposto`, `descricao`, `valor`, `Operador`, `Datatual`) VALUES ('3', 'Imposto de numero 3', 1500, 'Master', '1899-12-30 00:06:42');
 INSERT INTO `Tab_impostos` (`cod_imposto`, `descricao`, `valor`, `Operador`, `Datatual`) VALUES ('4', 'Imposto numero 4', 50, 'Master', '2004-03-28 00:00:00');
-# 2 records
-
-#
-# Table structure for table 'Tab_ItemCompra'
-#
 
 DROP TABLE IF EXISTS `Tab_ItemCompra`;
 
@@ -1081,15 +907,6 @@ CREATE TABLE `Tab_ItemCompra` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_ItemCompra'
-#
-
-# 0 records
-
-#
-# Table structure for table 'Tab_itemRecebimento'
-#
 
 DROP TABLE IF EXISTS `Tab_itemRecebimento`;
 
@@ -1108,15 +925,6 @@ CREATE TABLE `Tab_itemRecebimento` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_itemRecebimento'
-#
-
-# 0 records
-
-#
-# Table structure for table 'Tab_ItemVenda'
-#
 
 DROP TABLE IF EXISTS `Tab_ItemVenda`;
 
@@ -1136,9 +944,6 @@ CREATE TABLE `Tab_ItemVenda` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_ItemVenda'
-#
 
 INSERT INTO `Tab_ItemVenda` (`nsu`, `codprod`, `QTDEp`, `QtdeA`, `Precocusto`, `PRECOUNIT`, `PREPROMO`, `VALORTOT`, `Operador`, `Datatual`) VALUES ('000000001', '000001', 1, NULL, NULL, 20, NULL, NULL, 'Master', '2004-04-27 00:00:00');
 INSERT INTO `Tab_ItemVenda` (`nsu`, `codprod`, `QTDEp`, `QtdeA`, `Precocusto`, `PRECOUNIT`, `PREPROMO`, `VALORTOT`, `Operador`, `Datatual`) VALUES ('000000002', '000002', 1, NULL, NULL, 20, NULL, NULL, 'Master', '2004-04-27 00:00:00');
@@ -1229,11 +1034,6 @@ INSERT INTO `Tab_ItemVenda` (`nsu`, `codprod`, `QTDEp`, `QtdeA`, `Precocusto`, `
 INSERT INTO `Tab_ItemVenda` (`nsu`, `codprod`, `QTDEp`, `QtdeA`, `Precocusto`, `PRECOUNIT`, `PREPROMO`, `VALORTOT`, `Operador`, `Datatual`) VALUES ('000000072', '000006', 1, 3, 4, 7, NULL, 7, 'Master', '2008-01-21 00:00:00');
 INSERT INTO `Tab_ItemVenda` (`nsu`, `codprod`, `QTDEp`, `QtdeA`, `Precocusto`, `PRECOUNIT`, `PREPROMO`, `VALORTOT`, `Operador`, `Datatual`) VALUES ('000000074', '000004', 1, 1, 10, 18, NULL, 18, 'Master', '2008-01-21 00:00:00');
 INSERT INTO `Tab_ItemVenda` (`nsu`, `codprod`, `QTDEp`, `QtdeA`, `Precocusto`, `PRECOUNIT`, `PREPROMO`, `VALORTOT`, `Operador`, `Datatual`) VALUES ('000000075', '000001', 2, 2, 2, 5, NULL, 10, 'Master', '2008-01-21 00:00:00');
-# 89 records
-
-#
-# Table structure for table 'Tab_LDes'
-#
 
 DROP TABLE IF EXISTS `Tab_LDes`;
 
@@ -1248,19 +1048,11 @@ CREATE TABLE `Tab_LDes` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_LDes'
-#
 
 INSERT INTO `Tab_LDes` (`Datalanc`, `CCusto`, `Descricao`, `Valor`, `operador`, `datatual`) VALUES ('2004-08-25 00:00:00', 9, 'aaa', 5, 'Master', '2004-08-25 00:00:00');
 INSERT INTO `Tab_LDes` (`Datalanc`, `CCusto`, `Descricao`, `Valor`, `operador`, `datatual`) VALUES ('2004-08-25 00:00:00', 6, ' ', 3.24, 'Master', '2004-08-25 00:00:00');
 INSERT INTO `Tab_LDes` (`Datalanc`, `CCusto`, `Descricao`, `Valor`, `operador`, `datatual`) VALUES ('2004-08-25 00:00:00', 6, 'sdklsdsdsd', 80.5, 'Master', '2004-08-25 00:00:00');
 INSERT INTO `Tab_LDes` (`Datalanc`, `CCusto`, `Descricao`, `Valor`, `operador`, `datatual`) VALUES ('2004-04-01 00:00:00', 8, 'Comprou gesso em toneis de carvalho', 10.5, 'Master', '2004-08-25 00:00:00');
-# 4 records
-
-#
-# Table structure for table 'Tab_lojas'
-#
 
 DROP TABLE IF EXISTS `Tab_lojas`;
 
@@ -1291,40 +1083,9 @@ CREATE TABLE `Tab_lojas` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_lojas'
-#
 
 INSERT INTO `Tab_lojas` (`Loja`, `NOME`, `ENDERECO`, `BAIRRO`, `CIDADE`, `ESTADO`, `CEP`, `CGC`, `INSC_EST`, `TELEFONE`, `TELEX`, `CELULAR`, `MENSAGEM1`, `MENSAGEM2`, `divCUPOM`, `SENHA`, `ATUALIZAD`, `Operador`, `Datatual`, `Palavra`, `Impresso`) VALUES (1, 'Vibe Informatica', 'Rua Marcilio Dias, 27 - loja N5', 'Gonzaga', 'Santos', 'SP', '11060210', '', '', '3288-1450', NULL, '', '', '', 0, 0, 0, 'Master', '2006-09-10 00:00:00', 'Orçamento', '80');
-# 1 records
 
-#
-# Table structure for table 'tab_med'
-#
-
-DROP TABLE IF EXISTS `tab_med`;
-
-CREATE TABLE `tab_med` (
-  `cod_obra` INTEGER NOT NULL, 
-  `medicao` INTEGER, 
-  `dta_medicao` DATETIME, 
-  `operador` VARCHAR(10), 
-  `datatual` DATETIME
-) ENGINE=myisam DEFAULT CHARSET=utf8;
-
-SET autocommit=1;
-
-#
-# Dumping data for table 'tab_med'
-#
-
-INSERT INTO `tab_med` (`cod_obra`, `medicao`, `dta_medicao`, `operador`, `datatual`) VALUES (7, 1, '2004-04-01 00:00:00', 'Master', '2004-03-25 00:00:00');
-INSERT INTO `tab_med` (`cod_obra`, `medicao`, `dta_medicao`, `operador`, `datatual`) VALUES (8, 1, '2004-03-10 00:00:00', 'Master', '2004-03-30 00:00:00');
-# 2 records
-
-#
-# Table structure for table 'Tab_MovEstoque'
-#
 
 DROP TABLE IF EXISTS `Tab_MovEstoque`;
 
@@ -1343,9 +1104,6 @@ CREATE TABLE `Tab_MovEstoque` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_MovEstoque'
-#
 
 INSERT INTO `Tab_MovEstoque` (`TIPO`, `E_S`, `DATA`, `CODVEND`, `FARMACIA`, `CODPROD`, `QTDE`, `PRECOUNIT`, `Operador`, `Datatual`) VALUES (1, 'S', '2004-05-01 00:00:00', '33', NULL, '2', 10, 21.11, 'Master', '2004-05-01 00:00:00');
 INSERT INTO `Tab_MovEstoque` (`TIPO`, `E_S`, `DATA`, `CODVEND`, `FARMACIA`, `CODPROD`, `QTDE`, `PRECOUNIT`, `Operador`, `Datatual`) VALUES (1, 'S', '2004-05-01 00:00:00', '33', NULL, '2', 10, 21.11, 'Master', '2004-05-01 00:00:00');
@@ -1436,11 +1194,6 @@ INSERT INTO `Tab_MovEstoque` (`TIPO`, `E_S`, `DATA`, `CODVEND`, `FARMACIA`, `COD
 INSERT INTO `Tab_MovEstoque` (`TIPO`, `E_S`, `DATA`, `CODVEND`, `FARMACIA`, `CODPROD`, `QTDE`, `PRECOUNIT`, `Operador`, `Datatual`) VALUES (1, 'S', '2004-04-30 00:00:00', '33', NULL, '2', 1, 21.11, 'Master', '2004-04-30 00:00:00');
 INSERT INTO `Tab_MovEstoque` (`TIPO`, `E_S`, `DATA`, `CODVEND`, `FARMACIA`, `CODPROD`, `QTDE`, `PRECOUNIT`, `Operador`, `Datatual`) VALUES (1, 'S', '2004-04-30 00:00:00', '33', NULL, '2', 1, 21.11, 'Master', '2004-04-30 00:00:00');
 INSERT INTO `Tab_MovEstoque` (`TIPO`, `E_S`, `DATA`, `CODVEND`, `FARMACIA`, `CODPROD`, `QTDE`, `PRECOUNIT`, `Operador`, `Datatual`) VALUES (1, 'S', '2004-04-30 00:00:00', '33', NULL, '1', 1, 21.11, 'Master', '2004-04-30 00:00:00');
-# 89 records
-
-#
-# Table structure for table 'Tab_NF'
-#
 
 DROP TABLE IF EXISTS `Tab_NF`;
 
@@ -1458,40 +1211,6 @@ CREATE TABLE `Tab_NF` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_NF'
-#
-
-# 0 records
-
-#
-# Table structure for table 'Tab_obras'
-#
-
-DROP TABLE IF EXISTS `Tab_obras`;
-
-CREATE TABLE `Tab_obras` (
-  `cod_obra` INTEGER NOT NULL AUTO_INCREMENT, 
-  `Unidade` VARCHAR(50), 
-  `Contratante` VARCHAR(50), 
-  `Observacoes` LONGTEXT, 
-  `Operador` VARCHAR(10), 
-  `Datatual` DATETIME, 
-  PRIMARY KEY (`cod_obra`)
-) ENGINE=myisam DEFAULT CHARSET=utf8;
-
-SET autocommit=1;
-
-#
-# Dumping data for table 'Tab_obras'
-#
-
-INSERT INTO `Tab_obras` (`cod_obra`, `Unidade`, `Contratante`, `Observacoes`, `Operador`, `Datatual`) VALUES (8, 'unidade numero 8', 'Contratante de testes', 'Não tem observações', 'Master', '2004-03-28 00:00:00');
-# 1 records
-
-#
-# Table structure for table 'Tab_operador'
-#
 
 DROP TABLE IF EXISTS `Tab_operador`;
 
@@ -1509,17 +1228,9 @@ CREATE TABLE `Tab_operador` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_operador'
-#
 
 INSERT INTO `Tab_operador` (`codoperador`, `NOME`, `SENHA`, `NIVEL`, `Salario`, `comissao`, `OPerador`, `Datatual`) VALUES (33, 'Numero 33', '@@A', 3, 0, 1, 'Master', '2004-09-09 00:00:00');
 INSERT INTO `Tab_operador` (`codoperador`, `NOME`, `SENHA`, `NIVEL`, `Salario`, `comissao`, `OPerador`, `Datatual`) VALUES (34, 'Mais um Balconista de Testes', '@@A', 1, 1000, 5, 'Master', '2004-03-29 00:00:00');
-# 2 records
-
-#
-# Table structure for table 'Tab_produtos'
-#
 
 DROP TABLE IF EXISTS `Tab_produtos`;
 
@@ -1568,9 +1279,6 @@ CREATE TABLE `Tab_produtos` (
 
 SET autocommit=1;
 
-#
-# Dumping data for table 'Tab_produtos'
-#
 
 INSERT INTO `Tab_produtos` (`codprod`, `codbar`, `codgrupo`, `PRD_SUB`, `descricao`, `descresu`, `estinicial`, `estatual`, `minimo`, `unidade`, `codfor`, `indlucro`, `prevenda1`, `prevenda2`, `prevenda3`, `prevenda4`, `prevenda5`, `dtultvenda`, `dtcadastro`, `Ativo`, `PRD_CFO`, `PRD_IPI`, `PRD_SIT`, `PRD_CLF`, `PRD_QTU`, `PRD_DCA`, `PRD_VLA`, `PRD_DCM`, `PRD_ETQ`, `PRD_ICM`, `PRD_DCP`, `Precocusto`, `PRD_KIT`, `PRD_TPP`, `operador`, `datatual`, `dtultcomp`, `codigo_m`) VALUES ('000001', ' ', 1, NULL, 'PENTE DE MEMORIA 256 MB', 'ALICATE', NULL, -2, 0, 'PC', 14, 163, 5, 5, 5, 5, 5, '2004-08-16 00:00:00', '2002-04-24 00:00:00', 0, NULL, 0, NULL, NULL, 0, 0, 0, 0, NULL, 18, 0, 1.9, 0, 'A', 'Master', '2008-01-21 00:00:00', NULL, 1);
 INSERT INTO `Tab_produtos` (`codprod`, `codbar`, `codgrupo`, `PRD_SUB`, `descricao`, `descresu`, `estinicial`, `estatual`, `minimo`, `unidade`, `codfor`, `indlucro`, `prevenda1`, `prevenda2`, `prevenda3`, `prevenda4`, `prevenda5`, `dtultvenda`, `dtcadastro`, `Ativo`, `PRD_CFO`, `PRD_IPI`, `PRD_SIT`, `PRD_CLF`, `PRD_QTU`, `PRD_DCA`, `PRD_VLA`, `PRD_DCM`, `PRD_ETQ`, `PRD_ICM`, `PRD_DCP`, `Precocusto`, `PRD_KIT`, `PRD_TPP`, `operador`, `datatual`, `dtultcomp`, `codigo_m`) VALUES ('000002', ' ', 4, NULL, 'PLACA DE VIDEO DE 486 ', 'ARAME GALV. 10', NULL, 100, 500, 'KG', 2, 41, 4.23, 4, 4, 4, 4, '2004-08-18 00:00:00', '2002-04-26 00:00:00', 0, NULL, 0, NULL, NULL, 0, 0, 0, 0, NULL, 18, 0, 3.18, 0, 'A', 'Master', '2008-01-21 00:00:00', NULL, 1);

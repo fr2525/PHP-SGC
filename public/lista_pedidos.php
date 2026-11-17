@@ -3,21 +3,40 @@
 
 <?php include_once('../includes/menu.inc.php')
 
+
+/* SELECT id_venda
+        ,id_cliente
+        ,id_usuario
+        ,descricao
+        ,qtde
+        ,preco
+        ,total_venda
+        ,status
+        ,data_Compra
+        ,data_prevista
+        ,data_Finaliza
+        ,data_entrega 
+    FROM `tb_pedidos`
+*/
+
 ?>
 
-<div class="container text-center">
-    <div class="d-flex justify-content-between align-items-center bg-light p-3">
-        <!-- Conteúdo do lado esquerdo (um texto, por exemplo) -->
-        <div>
-            <span class="fw-bold">Pedidos</span>
+<div class="row container" style="width: 90%">
+    <div class="col s12">
+        <div class="col s9" style="text-align: left;">
+            <h5 class="light">Pedidos</h5>
         </div>
-        <!-- Botão do lado direito -->
-        <div>
-            <a href="novopedido.php" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Novo</a>
+        <div class="col s3" style="padding: 15px 0px 0px 0px;">
+            <a href="novoPedido.php" class="waves-effect waves-light btn-small right">Novo</a>
         </div>
+
     </div>
-    <div class="col-12">
-        <table class="table table-striped">
+    <div class="col s12">
+        <br>
+        <hr>
+    </div>
+    <div class="col s12">
+        <table class="striped">
             <thead>
                 <tr>
                     <th>Cliente</th>

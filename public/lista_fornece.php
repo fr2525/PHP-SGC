@@ -1,28 +1,31 @@
 <?php include_once('../includes/header.inc.php')
 ?>
+
 <?php include_once('../includes/menu.inc.php')
 ?>
 
-
-<div class="container text-center">
-    <div class="d-flex justify-content-between align-items-center bg-light p-3">
-        <!-- Conteúdo do lado esquerdo (um texto, por exemplo) -->
-        <div>
-            <span class="fw-bold">Lista de Fornecedores</span>
-        </div>
-
-        <!-- Botão do lado direito -->
-        <div>
-            <a href="novofor.php" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Novo</a>
-        </div>
+<div class="row container" style="width: 90%">
+  <div class="col s12">
+    <div class="col s9" style="text-align: left;">
+      <h5 class="light">Lista de Fornecedores</h5>
+    </div>
+    <div class="col s3" style="padding: 15px 0px 0px 0px;">
+      <a href="novofor.php" class="waves-effect waves-light btn-small right">Novo</a>
     </div>
 
-    <div class="col-12">
-    <table class="table table-striped">
+
+  </div>
+  <div class="col s12">
+    <br>
+    <hr>
+  </div>
+  <div class="col s12">
+    <table class="striped">
       <thead>
         <tr>
           <th>CPF/CNPJ</th>
           <th>Nome</th>
+          <th>Endereço</th>
           <th>Email</th>
           <th>Celular</th>
           <th>Ações</th>

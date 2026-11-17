@@ -9,168 +9,101 @@ and open the template in the editor.
 include_once('../includes/menu.inc.php');
 
 if (isset($_SESSION['cpf_cnpj'])) :
-  $cpf_cnpj = $_SESSION['cpf_cnpj'];
+    $cpf_cnpj = $_SESSION['cpf_cnpj'];
 else :
-  $cpf_cnpj = "";
+    $cpf_cnpj = "";    
 endif;
 if (isset($_SESSION['nome'])) :
-  $nome = $_SESSION['nome'];
+    $nome = $_SESSION['nome'];
 else :
-  $nome = "";
+    $nome = "";    
 endif;
-if (isset($_SESSION['endereco'])) :
-  $endereco = $_SESSION['endereco'];
-else :
-  $endereco = "";
-endif;
-if (isset($_SESSION['numero'])) :
-  $numero = $_SESSION['numero'];
-else :
-  $numero = "";
-endif;
-if (isset($_SESSION['complemento'])) :
-  $complemento = $_SESSION['complemento'];
-else :
-  $complemento = "";
-endif;
-if (isset($_SESSION['bairro'])) :
-  $bairro = $_SESSION['bairro'];
-else :
-  $bairro = "";
-endif;
-if (isset($_SESSION['cidade'])) :
-  $cidade = $_SESSION['cidade'];
-else :
-  $cidade = "";
-endif;
-if (isset($_SESSION['estado'])) :
-  $estado = $_SESSION['estado'];
-else :
-  $estado = "";
-endif;
-if (isset($_SESSION['cep'])) :
-  $cep = $_SESSION['cep'];
-else :
-  $cep = "";
-endif;
-
 if (isset($_SESSION['email'])) :
-  $email = $_SESSION['email'];
+    $email = $_SESSION['email'];
 else :
-  $email = "";
+    $email = "";    
 endif;
 if (isset($_SESSION['celular'])) :
-  $celular = $_SESSION['celular'];
+    $celular = $_SESSION['celular'];
 else :
-  $celular = "";
+    $celular = "";    
 endif;
 
 ?>
-<div class="container">
-  <div class="d-flex justify-content-between align-items-center bg-light p-3 mb-4">
-    <!-- Conteúdo do lado esquerdo (um texto, por exemplo) -->
-    <div>
-      <span class="fw-bold">Novo Cliente</span>
-    </div>
-  </div>
-  <div class="container border"  style="background-color: #e0d9c0;">
-    <form action="../banco_de_dados/createcli.php" id="formCliente" method="post">
 
-      <div class="row mb-4">
-        <!-- Campo Nome -->
-        <div class="col-6">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" placeholder="Seu nome">
-        </div>
+<div class="row container">
+    <form action="../banco_de_dados/createcli.php" id="formCliente" method="post" class="col s12">
+        <fieldset class="formulario" style="padding: 15px">
+           <!-- <legend><img src="imagens/avatar-1.png" width="50"></legend>  -->
+            <h5 class="light center">Cadastro de Clientes</h5>
 
-        <!-- Campo CPF  -->
-        <div class="col-3">
-          <label for="cpf" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="cpf" placeholder="CPF">
-        </div>
+            <?php
+            if (isset($_SESSION['msg'])) :
+                echo $_SESSION['msg'];
+                session_unset();
+            endif;
+            ?>
 
-        <!-- Campo Celular -->
-        <div class="col-3">
-          <label for="celular" class="form-label">Celular</label>
-          <input type="text" class="form-control" id="celular" placeholder="Celular">
-        </div>
-      </div>
+            <div class="row">
+                <!-- Campo CPF -->
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">fingerprint</i>
+                    <input type="text" name="cpf_cnpj" value="<?php echo $cpf_cnpj ?>" id="cpf_cnpj" maxlength="20" required="" autofocus>
+                    <label for="cpf_cnpj">CPF/CNPJ</label>
+                </div>
 
-      <div class="row mb-4">
-        <!-- Campo Endereço -->
-        <div class="col-9">
-          <label for="endereco" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="endereco" placeholder="Seu endereço">
-        </div>
+                <!-- Campo Nome -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" name="nome" value="<?php echo $nome ?>" id="nome" maxlength="40" required="" autofocus>
+                    <label for="nome">Nome do cliente</label>
+                </div>
+                
+            </div>
 
-        <!-- Campo Número  -->
-        <div class="col-3">
-          <label for="numero" class="form-label">No.</label>
-          <input type="text" class="form-control" id="numero" placeholder="No.">
-        </div>
-      </div>
+            <div class="row">
+                <!-- Campo email -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input type="text" name="email" value="<?php echo $email ?>" id="email" maxlength="100" required="">
+                    <label for="email">E-mail</label>
+                </div>
+            </div>
 
-      <!-- Complemento / cidade / UF / CEP -->
-      <div class="row mb-4">
-        <!-- Campo complemento -->
-        <div class="col-3">
-          <label for="complemento" class="form-label">Complemento</label>
-          <input type="text" class="form-control" id="complemento" placeholder="Complemento">
-        </div>
-        <!-- Campo bairro -->
-        <div class="col-3">
-          <label for="bairro" class="form-label">Bairro</label>
-          <input type="text" class="form-control" id="bairro" placeholder="Bairro">
-        </div>
+            <div class="row">
 
-        <!-- Campo Cidade  -->
-        <div class="col-3">
-          <label for="cidade" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="cidade" placeholder="Cidade">
-        </div>
-        <!-- Campo Estado  -->
-        <div class="col-1">
-          <label for="estado" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="estado" placeholder="UF">
-        </div>
-        <!-- Campo Cep  -->
-        <div class="col-2">
-          <label for="cep" class="form-label">Cep</label>
-          <input type="text" class="form-control" id="cep" placeholder="CEP">
-        </div>
+                <!-- Campo Celular -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix"></i>
+                    <input type="text" name="celular" value="<?php echo $celular ?>" id="celular" maxlength="20" required="">
+                    <label for="celular">Tel.Celular</label>
+                </div>
+            </div>    
 
-      </div>
+            <!-- Botões -->
+            <div class="input-field col s12">
+                <input type="submit" value="Cadastrar" class="btn blue">&nbsp&nbsp
+                <input type="button" value="Limpar" onclick="resetar()" class="btn red">&nbsp&nbsp
+                <a href="lista_clientes.php" class="btn purple">Voltar</a>
+            </div>
 
-      <div class="row mb-4">
-        <!-- Campo Email ocupando 8 colunas -->
-        <div class="col-8">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
-        </div>
-
-      </div>
-      <div class="container mb-4">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-        <button type="button" value="Limpar" onclick="resetar()" class="btn btn-light">Limpar</button>
-        <button class="btn btn-link" onclick="window.location='lista_clientes.php'">Voltar</button>
-        
-      </div>
+        </fieldset>
     </form>
-  </div>
 </div>
 
 <script>
-  function resetar() {
-    var form = document.getElementById("formCliente");
-    var cpf = form.cpf.value;
 
-    var set = confirm("Deseja apagar os dados do formulário?");
-    if (set) {
+function resetar() {
+   var form   = document.getElementById("formCliente");
+   var cpf   = form.cpf.value;
+
+   var set = confirm("Deseja apagar os dados do formulário?");
+   if (set) {
       //alert('Os campos do formulário foram resetados!');
       form.reset();
       form.cpf.focus();
-    }
-  }
+   }
+}
 </script>
 
 <?php include_once('../includes/footer.inc.php');
