@@ -78,7 +78,7 @@ endwhile;
             <!-- Botões -->
             <div class="input-field col s12">
                 <input type="submit" value="Alterar" class="btn blue">
-                <a href="lista_clientes.php" class="btn red">Cancelar</a>
+                <a href="lista_clientes.php" class="btn red">Voltar</a>
             </div>
 
         </fieldset>

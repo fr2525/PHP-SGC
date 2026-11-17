@@ -24,6 +24,16 @@ if (isset($_SESSION['endereco'])):
 else:
     $endereco = "";
 endif;
+if (isset($_SESSION['numero'])):
+    $numero = $_SESSION['numero'];
+else:
+    $numero = "";
+endif;
+if (isset($_SESSION['complemento'])):
+    $complemento = $_SESSION['complemento'];
+else:
+    $complemento = "";
+endif;
 if (isset($_SESSION['bairro'])):
     $bairro = $_SESSION['bairro'];
 else:
@@ -49,16 +59,15 @@ if (isset($_SESSION['telefone'])):
 else:
     $telefone = "";
 endif;
-
-if (isset($_SESSION['email'])):
-    $email = $_SESSION['email'];
-else:
-    $email = "";
-endif;
 if (isset($_SESSION['celular'])):
     $celular = $_SESSION['celular'];
 else:
     $celular = "";
+endif;
+if (isset($_SESSION['email'])):
+    $email = $_SESSION['email'];
+else:
+    $email = "";
 endif;
 
 ?>
