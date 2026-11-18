@@ -31,20 +31,18 @@ $str_sql = "update tb_fornecedores SET cpf_cnpj = '$cpf_cnpj'
 
 $queryUpdate = $link->query($str_sql);
 
-$affected_rows = mysqli_affected_rows($link);
-
 if (!$queryUpdate) {
     echo "Erro no update: " . $link->error;
 }
 
+$affected_rows = mysqli_affected_rows($link);
+
 if ($affected_rows > 0) {
-    header("refresh:1;url=../public/lista_fornece.php"); // Redireciona após 1 segundos
-    echo '<script>alert("Fornecedor atualizado com sucesso!");</script>';
-    exit;
+    $_SESSION['msg'] = "<h5><p class='center green-text'>" . "Alteração efetuada com sucesso" . "</p></h5>";
+    header("Location: ../public/editarFor.php?id=$id");
 } else {
-    header("refresh:1;url=../public/lista_fornece.php"); // Redireciona após 1 segundos
-    echo '<script>alert("Nada a atualizar!");</script>';
-    exit;
+    $_SESSION['msg'] = "<h5><p class='center green-text'>" . "Nada a alterar" . "</p></h5>";
+    header("Location: ../public/editarFor.php?id=$id");
     
 }
 ?>

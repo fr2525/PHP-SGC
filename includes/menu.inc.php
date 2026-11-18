@@ -38,7 +38,7 @@
     <div class="nav-wrapper">
         <div class="brand-logo light">Gestão Comercial</div>
         <ul class="right">
-            <li><a href="index.php"><i class="material-icons tiny">home</i>Home </a></li>
+            <li><a href="index.php"><i class="material-icons tiny">home</i></a></li>
             <!-- Dropdown Trigger -->
             <li style="background-color: darkseagreen";><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
             <li style="background-color: darkseagreen";><a class="dropdown-trigger" href="#!" data-target="dropdown2">Movimentações<i class="material-icons right">arrow_drop_down</i></a></li>

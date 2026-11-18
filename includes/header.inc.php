@@ -22,5 +22,5 @@
     <title>Gerenciamento comercial</title>
 </head>
 
-<body>
+<body style="background-color: lightblue;">
 
