@@ -63,7 +63,7 @@ CREATE TABLE  tb_produtos  (
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $_SESSION['id'] = $id;
-$str_sql = "select a.id,a.descricao,a.codbar,a.codgrupo, b.descricao as descgrupo,a.descresu
+$str_sql = "select a.id,a.descricao as descricao,a.codbar,a.codgrupo, b.descricao as descgrupo,a.descresu
                             ,a.estinicial,a.estatual,a.minimo,a.unidade,a.codfor,c.nome as nomefor
                             ,a.indlucro,a.prevenda1,a.prevenda2, dtultvenda,dtcadastro
                             ,Ativo,PRD_CFO,PRD_IPI,PRD_CLF,PRD_ICM,Precocusto 
@@ -74,6 +74,13 @@ $str_sql = "select a.id,a.descricao,a.codbar,a.codgrupo, b.descricao as descgrup
 //exit();
 
 $querySelect = $link->query($str_sql);
+
+if ($querySelect->num_rows == 0) {
+    echo "<script>alert('Problema no cadastro de produtos, não encontrou algum registro relacionado')</script>";
+    
+    echo "<script>location.href='lista_produtos.php'</script>";
+    exit();
+};
 
 while ($registros = $querySelect->fetch_assoc()):
     $id = $registros['id'];
@@ -128,9 +135,7 @@ endwhile;
                         required="" autofocus>
                     <label for="descricao">descricao</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s8">
+                <div class="input-field col s4">
                     <input type="text" name="codbar" id="codbar" value="<?php echo $codbar ?>" maxlength="13" required="">
                     <label for="codbar">Cod. Barra</label>
                 </div>
