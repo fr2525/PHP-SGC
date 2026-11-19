@@ -12,6 +12,11 @@ $sqlTotal = "SELECT id FROM tb_fornecedores";
 $qrTotal = $link->query($sqlTotal);
 $numTotalFornece = $qrTotal->num_rows;
 
+if (isset($_SESSION['usuario'])):
+    $usuario = $_SESSION['usuario'];
+else:
+    $usuario = 'Caro(a) Usuário(a)';
+endif;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +28,8 @@ $numTotalFornece = $qrTotal->num_rows;
 <body>
     <div class="container" style="width: 90%">
         <div class="body dashboard">
-            <!-- <h5>Seja bem-vindo(a), <?php echo $_SESSION['usuario'];?>.</h5>  -->
-            <h5>Seja bem-vindo(a) Caro Usuário</h5>
+            <h5>Seja bem-vindo(a), <?php echo $usuario;?>.</h5>
+            <!-- <h5>Seja bem-vindo(a) Caro Usuário</h5>  -->
             <div class="dashboard-row">
                 <div class="dashboard-card shadow">
                     <div class="card-icon cyan">

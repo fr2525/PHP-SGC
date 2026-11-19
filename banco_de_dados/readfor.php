@@ -2,7 +2,7 @@
 include_once 'conexao.php';
 
 //A quantidade de valor a ser exibida
-$quantidade = 7;
+$quantidade = 6;
 //a pagina atual
 $pagina     = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
 //Calcula a pagina de qual valor será exibido

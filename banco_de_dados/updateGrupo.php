@@ -26,7 +26,6 @@ if (!$queryUpdate) {
 
 $affected_rows = mysqli_affected_rows($link);
 
-
 if ($affected_rows > 0) {
     $_SESSION['msg'] = "<h5><p class='center green-text'>" . "Alteração efetuada com sucesso" . "</p></h5>";
     header("Location: ../public/editarGrupo.php?id=$id");

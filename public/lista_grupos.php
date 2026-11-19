@@ -23,8 +23,8 @@
             <thead>
                 <tr>
                     <th>Descrição</th>
-                    <th>Ind.Lucro 1</th>
-                    <th>Ind Lucro 2</th>
+                    <th>% Lucro 1</th>
+                    <th>% Lucro 2</th>
                     <th>Ações</th>
                 </tr>
             </thead>

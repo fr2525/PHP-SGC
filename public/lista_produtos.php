@@ -1,28 +1,29 @@
-<?php include_once('includes/header.inc.php')
+<?php include_once('../includes/header.inc.php')
 ?>
 
-<?php include_once('includes/menu.inc.php')
+<?php include_once('../includes/menu.inc.php')
 ?>
 
 <div class="row container">
     <div class="col s12">
-        <h5 class="light"> Lista de Clientes </h5><hr>
+        <h5 class="light"> Lista de Produtos </h5><hr>
         <table class="striped">
             <thead>
                 <tr>
-                    <th>CPF</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Celular</th>
+                    <th>Descricao</th>
+                    <th>Unidade</th>
+                    <th>Estoque</th>
+                    <th>Preço 1</th>
+                    <th>Preço 2</th>
                 </tr>
             </thead>
             <tbody>
-                <?php include_once('banco_de_dados/readcli.php'); ?>
+                <?php include_once('../banco_de_dados/readprod.php'); ?>
             </tbody>
         </table>
     </div>
 
 </div>
 
-<?php include_once('includes/footer.inc.php')
+<?php include_once('../includes/footer.inc.php')
 ?>
