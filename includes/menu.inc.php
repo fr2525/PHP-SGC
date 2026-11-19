@@ -1,6 +1,5 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-    <li></li>
     <li><a href="lista_clientes.php"> Clientes</a></li>
     <li><a href="lista_fornece.php"> Fornecedores</a></li>
     <li class="divider"></li>

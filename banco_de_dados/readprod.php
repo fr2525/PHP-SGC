@@ -9,16 +9,16 @@ $pagina     = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
 $inicio     = ($quantidade * $pagina) - $quantidade;
 
 //SQL para saber o total
-$sqlTotal   = "SELECT codprod FROM tb_produtos";
+$sqlTotal   = "SELECT id FROM tb_produtos";
 
 //Monta o SQL com LIMIT para exibição dos dados  
-$strsql = "select codprod, descricao, unidade, estatual, prevenda1, prevenda2 from tb_produtos order by descricao LIMIT $inicio, $quantidade";
+$strsql = "select id, descricao, unidade, estatual, prevenda1, prevenda2 from tb_produtos order by descricao LIMIT $inicio, $quantidade";
 
 $querySelect = $link->query($strsql);
 
 while ($registros = $querySelect->fetch_assoc()):
 
-    $id = $registros['codprod'];
+    $id = $registros['id'];
     $descricao = $registros['descricao'];
     $unidade  =  $registros['unidade'];
     $estoque  =  $registros['estatual'];
@@ -32,10 +32,10 @@ while ($registros = $querySelect->fetch_assoc()):
     echo "<td>$prevenda1</td>";
     echo "<td>$prevenda2</td>";
 
-    echo "<td><a href='editarProd.php?codprod=$id'><i class='material-icons'>edit</i></td>";
+    echo "<td><a href='editarProd.php?id=$id'><i class='material-icons'>edit</i></td>";
     //echo "<td><a href='banco_de_dados/deleteCli.php?id=$id'><i class='material-icons'>delete</i></td>";
 
-    echo "<td><a href='../banco_de_dados/deleteProd.php?codprod=";
+    echo "<td><a href='../banco_de_dados/deleteProd.php?id=";
     echo $id."&tabela=tb_grupos&retorno=lista_Produtos.php' " ;
     echo ' OnClick="javascript:return confirm(\'Deseja mesmo excluir o produto \n marca: '.$descricao . ' ?\');">';
     echo "<i class='material-icons'>delete</i>";

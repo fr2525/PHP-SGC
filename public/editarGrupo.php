@@ -12,7 +12,6 @@ include_once '../includes/menu.inc.php';
 </div>  
 -->
 
-
 <?php
 include_once('../banco_de_dados/conexao.php');
 
