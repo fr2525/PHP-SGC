@@ -36,7 +36,7 @@
 
 <nav class="purple">
     <div class="nav-wrapper">
-        <div class="brand-logo light">Gestão Comercial</div>
+        <div class="brand-logo light">&nbsp&nbsp&nbspGestão Comercial</div>
         <ul class="right">
             <li><a href="index.php"><i class="material-icons tiny">home</i></a></li>
             <!-- Dropdown Trigger -->

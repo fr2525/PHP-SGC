@@ -118,9 +118,9 @@ endwhile;
 ?>
 
 <div class="row container">
-    <form action="../banco_de_dados/updateGrupo.php" id="formEditarGrupo" method="post" class="col s12">
+    <form action="../banco_de_dados/updateProd.php" id="formEditarprod" method="post" class="col s12">
         <fieldset class="formulario" style="padding: 15px">
-            <legend><img src="imagens/avatar-1.png" width="50"></legend>
+            <!-- <legend><img src="imagens/avatar-1.png" width="50"></legend>  -->
             <h5 class="light center">Alteração de produto</h5>
 
             <?php
