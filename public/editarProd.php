@@ -146,7 +146,6 @@ endwhile;
 
             <div class="row">
                 <div class="input-field col s4">
-
                     <select name="codgrupo[]" id="codgrupo">
                         <!-- <option disabled>Clique para escolher </option>  -->
                         <?php
@@ -162,106 +161,112 @@ endwhile;
                         endwhile;
                         echo '</select>';
                         echo '<label for="codgrupo">Grupo do produto</label>';
-
                         ?>
                 </div>
 
-            <!-- Campo prevenda1 -->
-            <div class="input-field col s2">
-                <input type="text" name="prevenda1" id="prevenda1"
-                    value="<?php echo number_format($prevenda1, 2, ',', '.'); ?>"
-                    onblur="javascript:this.value=formataValor(this.value);">
-                <label for="prevenda1">Preço 1</label>
+                <!-- Campo prevenda1 -->
+                <div class="input-field col s2">
+                    <input type="text" name="prevenda1" id="prevenda1"
+                        value="<?php echo number_format($prevenda1, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="prevenda1">Preço 1</label>
 
+                </div>
+                <!-- Campo prevenda2 -->
+                <div class="input-field col s2">
+                    <input type="text" name="prevenda2" id="prevenda2"
+                        value="<?php echo number_format($prevenda2, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="prevenda2">Preço 2</label>
+                </div>
+                <!-- Campo indice de lucro -->
+                <div class="input-field col s2">
+                    <input type="text" name="indlucro" id="indlucro"
+                        value="<?php echo number_format($indlucro, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="indlucro">% Lucro</label>
+                </div>
             </div>
-            <!-- Campo prevenda2 -->
-            <div class="input-field col s2">
-                <input type="text" name="prevenda2" id="prevenda2"
-                    value="<?php echo number_format($prevenda2, 2, ',', '.'); ?>"
-                    onblur="javascript:this.value=formataValor(this.value);">
-                <label for="prevenda2">Preço 2</label>
+
+            <!-- Estoque  -->
+            <div class="row">
+                <!-- Estoque  Inicial -->
+                <div class="input-field col s4">
+                    <input type="text" name="estinicial" id="estinicial"
+                        value="<?php echo number_format($estinicial, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="estinicial">Estoque inicial</label>
+                </div>
+
+                <!-- Estoque  Atual -->
+                <div class="input-field col s4">
+                    <input type="text" name="estatual" id="estatual"
+                        value="<?php echo number_format($estatual, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="estatual">Estoque atual</label>
+                </div>
+
+                <!-- Campo Estoque Minimo -->
+                <div class="input-field col s4">
+                    <input type="text" name="minimo" id="minimo"
+                        value="<?php echo number_format($minimo, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="minimo">Estoque minimo</label>
+                </div>
             </div>
-            <!-- Campo indice de lucro -->
-            <div class="input-field col s2">
-                <input type="text" name="indlucro" id="indlucro"
-                    value="<?php echo number_format($indlucro, 2, ',', '.'); ?>"
-                    onblur="javascript:this.value=formataValor(this.value);">
-                <label for="indlucro">% Lucro</label>
+
+            <!-- Outros campos -->
+            <div class="row">
+                <!-- Unidade -->
+                <div class="input-field col s4">
+                    <select name="uni_cod[]" id="unidade">
+                        <!-- <option disabled> Clique para escolher </option>  -->
+                        <?php
+                        $querySelect = $link->query("select uni_cod, uni_desc from tb_uni ");
+                        while ($registros = $querySelect->fetch_assoc()) :
+                            $id = $registros['uni_cod'];
+                            $desc = $registros['uni_desc'];
+                            if ($id == $unidade) {
+                                echo '<option selected="seleted" value=' . $id . '>' . $desc . '</option>';
+                            } else {
+                                echo '<option value=' . $id . '>' . $desc . '</option>';
+                            }
+                        endwhile;
+                        echo '</select>';
+                        echo '<label for="unidade">Unidade</label>';
+                        ?>
+                </div>
+
+                <!-- Fornecedor -->
+                <div class="input-field col s6">
+                    <input type="text" name="codfor" id="codfor" value="<?php echo $codfor ?>" maxlength="4">
+                    <label for="codfor">Fornecedor</label>
+                </div>
+   
             </div>
-</div>
 
-<!-- Estoque  -->
-<div class="row">
-    <!-- Estoque  Inicial -->
-    <div class="input-field col s4">
-        <input type="text" name="estinicial" id="estinicial"
-            value="<?php echo number_format($estinicial, 2, ',', '.'); ?>"
-            onblur="javascript:this.value=formataValor(this.value);">
-        <label for="estinicial">Estoque inicial</label>
-    </div>
+            <!-- Outros campos -->
+            <div class="row">
+                <!-- Ultima venda -->
+                <div class="input-field col s4">
+                    <input type="text" name="dtultvenda" id="dtultvenda" value="<?php echo $dtultvenda ?>" maxlength="2">
+                    <label for="dtultvenda">Ultima venda</label>
+                </div>
 
-    <!-- Estoque  Atual -->
-    <div class="input-field col s4">
-        <input type="text" name="estatual" id="estatual"
-            value="<?php echo number_format($estatual, 2, ',', '.'); ?>"
-            onblur="javascript:this.value=formataValor(this.value);">
-        <label for="estatual">Estoque atual</label>
-    </div>
+                <!-- dtcadastro -->
+                <div class="input-field col s4">
+                    <input type="text" name="dtcadastro" id="dtcadastro" value="<?php echo $dtcadastro ?>" maxlength="4">
+                    <label for="dtcadastro">Data cadastro</label>
+                </div>
 
-    <!-- Campo Estoque Minimo -->
-    <div class="input-field col s4">
-        <input type="text" name="minimo" id="minimo"
-            value="<?php echo number_format($minimo, 2, ',', '.'); ?>"
-            onblur="javascript:this.value=formataValor(this.value);">
-        <label for="minimo">Estoque minimo</label>
-    </div>
-</div>
+                <!-- Campo Estoque Minimo -->
+                <div class="input-field col s4">
+                    <input type="text" name="Ativo" id="Ativo" value="<?php echo $Ativo ?>" maxlength="1">
+                    <label for="Ativo">Ativo ?</label>
+                </div>
+            </div>
 
-<!-- Outros campos -->
-<div class="row">
-    <!-- Unidade -->
-    <div class="input-field col s4">
-        <input type="text" name="unidade" id="unidade" value="<?php echo $unidade ?>" maxlength="2">
-        <label for="unidade">Unidade</label>
-    </div>
-
-    <!-- Fornecedor -->
-    <div class="input-field col s4">
-        <input type="text" name="codfor" id="codfor" value="<?php echo $codfor ?>" maxlength="4">
-        <label for="codfor">Fornecedor</label>
-    </div>
-
-    <!-- Campo Estoque Minimo -->
-    <div class="input-field col s4">
-        <input type="text" name="minimo" id="minimo"
-            value="<?php echo number_format($minimo, 2, ',', '.'); ?>"
-            onblur="javascript:this.value=formataValor(this.value);">
-        <label for="minimo">Estoque minimo</label>
-    </div>
-</div>
-
-<!-- Outros campos -->
-<div class="row">
-    <!-- Ultima venda -->
-    <div class="input-field col s4">
-        <input type="text" name="dtultvenda" id="dtultvenda" value="<?php echo $dtultvenda ?>" maxlength="2">
-        <label for="dtultvenda">Ultima venda</label>
-    </div>
-
-    <!-- dtcadastro -->
-    <div class="input-field col s4">
-        <input type="text" name="dtcadastro" id="dtcadastro" value="<?php echo $dtcadastro ?>" maxlength="4">
-        <label for="dtcadastro">Data cadastro</label>
-    </div>
-
-    <!-- Campo Estoque Minimo -->
-    <div class="input-field col s4">
-        <input type="text" name="Ativo" id="Ativo" value="<?php echo $Ativo ?>" maxlength="1">
-        <label for="Ativo">Ativo ?</label>
-    </div>
-</div>
-
-<!--
+            <!--
    dtultvenda , 
    dtcadastro , 
    Ativo      ,
@@ -279,14 +284,14 @@ endwhile;
    PRD_TPP    ,
         -->
 
-<!-- Botões -->
-<div class="input-field col s12">
-    <input type="submit" value="Alterar" class="btn blue">
-    <a href="lista_produtos.php" class="btn red">Voltar</a>
-</div>
+            <!-- Botões -->
+            <div class="input-field col s12">
+                <input type="submit" value="Alterar" class="btn blue">
+                <a href="lista_produtos.php" class="btn red">Voltar</a>
+            </div>
 
-</fieldset>
-</form>
+        </fieldset>
+    </form>
 </div>
 
 <?php include_once('../includes/footer.inc.php') ?>
