@@ -6,16 +6,21 @@
 
 <div class="row container">
     <div class="col s12">
-        <h5 class="light"> Lista de Produtos </h5><hr>
+        <div class="col s9" style="text-align: left;">
+            <h5 class="light">Lista de Produtos</h5>
+        </div>
+        <div class="col s3" style="padding: 15px 0px 0px 0px;">
+            <a href="novoprod.php" class="waves-effect waves-light btn-small right">Novo</a>
+        </div>
+
+    </div>
+    <div class="col s12">
+        <br>
+        <hr>
+    </div>
+
+    <div class="col s12">
         <table class="striped">
-            <thead>
-                <tr>
-                    <th>Descricao</th>
-                    <th>Unidade</th>
-                    <th>Estoque</th>
-                    <th>Preço 1</th>
-                    <th>Preço 2</th>
-                </tr>
             </thead>
             <tbody>
                 <?php include_once('../banco_de_dados/readprod.php'); ?>

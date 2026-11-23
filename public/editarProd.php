@@ -65,7 +65,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $_SESSION['id'] = $id;
 $str_sql = "select a.id,a.descricao as descricao,a.codbar,a.codgrupo, b.descricao as descgrupo,a.descresu
                             ,a.estinicial,a.estatual,a.minimo,a.unidade,a.codfor,c.nome as nomefor
-                            ,a.indlucro,a.prevenda1,a.prevenda2, dtultvenda,dtcadastro
+                            ,a.indlucro,a.prevenda1,a.prevenda2,a.prevenda3,a.prevenda4, dtultvenda,dtcadastro
                             ,Ativo,PRD_CFO,PRD_IPI,PRD_CLF,PRD_ICM,Precocusto 
                             from tb_produtos a, tb_grupos b, tb_fornecedores c 
                             where a.id='$id' and a.codgrupo = b.id AND a.codfor = c.id;";
@@ -80,13 +80,16 @@ if ($querySelect->num_rows == 0) {
 
     echo "<script>location.href='lista_produtos.php'</script>";
     exit();
-};
+}
+;
 
 while ($registros = $querySelect->fetch_assoc()):
     $id = $registros['id'];
     $descricao = $registros['descricao'];
     $prevenda1 = $registros['prevenda1'];
     $prevenda2 = $registros['prevenda2'];
+    $prevenda3 = $registros['prevenda3'];
+    $prevenda4 = $registros['prevenda4'];
     $codbar = $registros['codbar'];
     $codgrupo = $registros['codgrupo'];
     $descresu = $registros['descresu'];
@@ -98,7 +101,7 @@ while ($registros = $querySelect->fetch_assoc()):
     $indlucro = $registros['indlucro'];
     $dtultvenda = $registros['dtultvenda'];
     $dtcadastro = $registros['dtcadastro'];
-    $Ativo = $registros['Ativo'];
+    $Ativo = ($registros['Ativo'] = 1) ? 'Sim' : 'Não';
     $Precocusto = $registros['Precocusto'];
 
 //    $PRD_CFO    = $registros['descricao']; 
@@ -145,85 +148,14 @@ endwhile;
 
 
             <div class="row">
-                <div class="input-field col s4">
-                    <select name="codgrupo[]" id="codgrupo">
-                        <!-- <option disabled>Clique para escolher </option>  -->
-                        <?php
-                        $querySelect = $link->query("select id, descricao as grupo from tb_grupos ");
-                        while ($registros = $querySelect->fetch_assoc()) :
-                            $id = $registros['id'];
-                            $grupo = $registros['grupo'];
-                            if ($id == $codgrupo) {
-                                echo '<option selected="seleted" value=' . $id . '>' . $grupo . '</option>';
-                            } else {
-                                echo '<option value=' . $id . '>' . $grupo . '</option>';
-                            }
-                        endwhile;
-                        echo '</select>';
-                        echo '<label for="codgrupo">Grupo do produto</label>';
-                        ?>
-                </div>
 
-                <!-- Campo prevenda1 -->
-                <div class="input-field col s2">
-                    <input type="text" name="prevenda1" id="prevenda1"
-                        value="<?php echo number_format($prevenda1, 2, ',', '.'); ?>"
-                        onblur="javascript:this.value=formataValor(this.value);">
-                    <label for="prevenda1">Preço 1</label>
-
-                </div>
-                <!-- Campo prevenda2 -->
-                <div class="input-field col s2">
-                    <input type="text" name="prevenda2" id="prevenda2"
-                        value="<?php echo number_format($prevenda2, 2, ',', '.'); ?>"
-                        onblur="javascript:this.value=formataValor(this.value);">
-                    <label for="prevenda2">Preço 2</label>
-                </div>
-                <!-- Campo indice de lucro -->
-                <div class="input-field col s2">
-                    <input type="text" name="indlucro" id="indlucro"
-                        value="<?php echo number_format($indlucro, 2, ',', '.'); ?>"
-                        onblur="javascript:this.value=formataValor(this.value);">
-                    <label for="indlucro">% Lucro</label>
-                </div>
-            </div>
-
-            <!-- Estoque  -->
-            <div class="row">
-                <!-- Estoque  Inicial -->
-                <div class="input-field col s4">
-                    <input type="text" name="estinicial" id="estinicial"
-                        value="<?php echo number_format($estinicial, 2, ',', '.'); ?>"
-                        onblur="javascript:this.value=formataValor(this.value);">
-                    <label for="estinicial">Estoque inicial</label>
-                </div>
-
-                <!-- Estoque  Atual -->
-                <div class="input-field col s4">
-                    <input type="text" name="estatual" id="estatual"
-                        value="<?php echo number_format($estatual, 2, ',', '.'); ?>"
-                        onblur="javascript:this.value=formataValor(this.value);">
-                    <label for="estatual">Estoque atual</label>
-                </div>
-
-                <!-- Campo Estoque Minimo -->
-                <div class="input-field col s4">
-                    <input type="text" name="minimo" id="minimo"
-                        value="<?php echo number_format($minimo, 2, ',', '.'); ?>"
-                        onblur="javascript:this.value=formataValor(this.value);">
-                    <label for="minimo">Estoque minimo</label>
-                </div>
-            </div>
-
-            <!-- Outros campos -->
-            <div class="row">
                 <!-- Unidade -->
-                <div class="input-field col s4">
+                <div class="input-field col s2">
                     <select name="uni_cod[]" id="unidade">
                         <!-- <option disabled> Clique para escolher </option>  -->
                         <?php
                         $querySelect = $link->query("select uni_cod, uni_desc from tb_uni ");
-                        while ($registros = $querySelect->fetch_assoc()) :
+                        while ($registros = $querySelect->fetch_assoc()):
                             $id = $registros['uni_cod'];
                             $desc = $registros['uni_desc'];
                             if ($id == $unidade) {
@@ -237,33 +169,145 @@ endwhile;
                         ?>
                 </div>
 
-                <!-- Fornecedor -->
-                <div class="input-field col s6">
-                    <input type="text" name="codfor" id="codfor" value="<?php echo $codfor ?>" maxlength="4">
-                    <label for="codfor">Fornecedor</label>
+
+                <div class="input-field col s4">
+                    <select name="codgrupo[]" id="codgrupo">
+                        <!-- <option disabled>Clique para escolher </option>  -->
+                        <?php
+                        $querySelect = $link->query("select id, descricao as grupo from tb_grupos ");
+                        while ($registros = $querySelect->fetch_assoc()):
+                            $id = $registros['id'];
+                            $grupo = $registros['grupo'];
+                            if ($id == $codgrupo) {
+                                echo '<option selected="seleted" value=' . $id . '>' . $grupo . '</option>';
+                            } else {
+                                echo '<option value=' . $id . '>' . $grupo . '</option>';
+                            }
+                        endwhile;
+                        echo '</select>';
+                        echo '<label for="codgrupo">Grupo do produto</label>';
+                        ?>
                 </div>
-   
+                <!-- Estoque  Inicial -->
+                <div class="input-field col s2">
+                    <input type="text" name="estinicial" id="estinicial"
+                        value="<?php echo number_format($estinicial, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="estinicial">Estoque inicial</label>
+                </div>
+
+                <!-- Estoque  Atual -->
+                <div class="input-field col s2">
+                    <input type="text" name="estatual" id="estatual"
+                        value="<?php echo number_format($estatual, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="estatual">Estoque atual</label>
+                </div>
+
+                <!-- Campo Estoque Minimo -->
+                <div class="input-field col s2">
+                    <input type="text" name="minimo" id="minimo"
+                        value="<?php echo number_format($minimo, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="minimo">Estoque minimo</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Campo precocusto -->
+                <div class="input-field col s2">
+                    <input type="text" name="Precocusto" id="Precocusto"
+                        value="<?php echo number_format($Precocusto, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="Precocusto">R$ Custo</label>
+                </div>
+
+                <!-- Campo indice de lucro -->
+                <div class="input-field col s2">
+                    <input type="text" name="indlucro" id="indlucro"
+                        value="<?php echo number_format($indlucro, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="indlucro">% Lucro</label>
+                </div>
+
+                <!-- Campo prevenda1 -->
+                <div class="input-field col s2">
+                    <input type="text" name="prevenda1" id="prevenda1"
+                        value="<?php echo number_format($prevenda1, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="prevenda1">Preço 1</label>
+                </div>
+
+                <!-- Campo prevenda2 -->
+                <div class="input-field col s2">
+                    <input type="text" name="prevenda2" id="prevenda2"
+                        value="<?php echo number_format($prevenda2, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="prevenda2">Preço 2</label>
+                </div>
+                <!-- Campo prevenda3 -->
+                <div class="input-field col s2">
+                    <input type="text" name="prevenda3" id="prevenda3"
+                        value="<?php echo number_format($prevenda3, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="prevenda3">Preço 3</label>
+                </div>
+                <!-- Campo prevenda4 -->
+                <div class="input-field col s2">
+                    <input type="text" name="prevenda4" id="prevenda4"
+                        value="<?php echo number_format($prevenda4, 2, ',', '.'); ?>"
+                        onblur="javascript:this.value=formataValor(this.value);">
+                    <label for="prevenda4">Preço 4</label>
+                </div>
+
             </div>
 
             <!-- Outros campos -->
             <div class="row">
+
+                <!-- Fornecedor -->
+                <div class="input-field col s7">
+                    <select name="codfor[]" id="codfor">
+                        <!-- <option disabled>Clique para escolher </option>  -->
+                        <?php
+                        $querySelect = $link->query("select id, nome from tb_fornecedores ");
+                        while ($registros = $querySelect->fetch_assoc()):
+                            $id = $registros['id'];
+                            $nome = $registros['nome'];
+                            if ($id == $codfor) {
+                                echo '<option selected="seleted" value=' . $id . '>' . $nome . '</option>';
+                            } else {
+                                echo '<option value=' . $id . '>' . $nome . '</option>';
+                            }
+                        endwhile;
+                        echo '</select>';
+                        echo '<label for="codfor">Fornecedor</label>';
+                        ?>
+                </div>
                 <!-- Ultima venda -->
-                <div class="input-field col s4">
-                    <input type="text" name="dtultvenda" id="dtultvenda" value="<?php echo $dtultvenda ?>" maxlength="2">
+                <div class="input-field col s2">
+                    <input type="text" name="dtultvenda" id="dtultvenda"
+                        value="<?php echo date('d/m/Y', strtotime($dtultvenda)); ?>" maxlength="2">
                     <label for="dtultvenda">Ultima venda</label>
                 </div>
-
                 <!-- dtcadastro -->
-                <div class="input-field col s4">
-                    <input type="text" name="dtcadastro" id="dtcadastro" value="<?php echo $dtcadastro ?>" maxlength="4">
+                <div class="input-field col s2">
+                    <input type="text" disabled name="dtcadastro" id="dtcadastro"
+                        value="<?php echo date('d/m/Y', strtotime($dtcadastro)); ?>" maxlength="4">
                     <label for="dtcadastro">Data cadastro</label>
                 </div>
 
-                <!-- Campo Estoque Minimo -->
-                <div class="input-field col s4">
+                <!-- Campo Ativo/Inativo -->
+                <div class="input-field col s1">
                     <input type="text" name="Ativo" id="Ativo" value="<?php echo $Ativo ?>" maxlength="1">
                     <label for="Ativo">Ativo ?</label>
                 </div>
+
+            </div>
+
+            <!-- Outros campos -->
+            <div class="row">
+
             </div>
 
             <!--
